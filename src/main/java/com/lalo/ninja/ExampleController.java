@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.lalo.ninja.model.Persona;
+
 @Controller
 @RequestMapping("/example")
 public class ExampleController {
@@ -15,7 +17,8 @@ public class ExampleController {
 	// Primera forma
 	@RequestMapping(value = "exampleString", method = RequestMethod.GET)
 	public String exampleString(Model model) {
-		model.addAttribute("name", "Perro");
+		//model.addAttribute("name", "Perro");
+		model.addAttribute("persona", new Persona("Lalo",25));
 		return EXAMPLE_VIEW;
 	}
 
@@ -24,7 +27,7 @@ public class ExampleController {
 	public ModelAndView exampleMAV() {
 		
 		ModelAndView mav = new ModelAndView(EXAMPLE_VIEW);
-		mav.addObject("name", "Perros");
+		mav.addObject("persona", new Persona("Edu", 25));
 		return mav;
 	}
 
