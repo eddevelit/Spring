@@ -1,5 +1,8 @@
 package com.lalo.ninja;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +21,7 @@ public class ExampleController {
 	@RequestMapping(value = "exampleString", method = RequestMethod.GET)
 	public String exampleString(Model model) {
 		//model.addAttribute("name", "Perro");
-		model.addAttribute("persona", new Persona("Lalo",25));
+		model.addAttribute("persona", getPersonas());
 		return EXAMPLE_VIEW;
 	}
 
@@ -27,8 +30,19 @@ public class ExampleController {
 	public ModelAndView exampleMAV() {
 		
 		ModelAndView mav = new ModelAndView(EXAMPLE_VIEW);
-		mav.addObject("persona", new Persona("Edu", 25));
+		mav.addObject("persona", getPersonas());
 		return mav;
+	}
+	
+	private List<Persona> getPersonas()
+	{
+		List<Persona> personas = new ArrayList<>();
+		personas.add(new Persona("Lalo", 21));
+		personas.add(new Persona("Edu", 22));
+		personas.add(new Persona("Eduardo", 23));
+		personas.add(new Persona("Ed", 21));
+		
+		return personas;
 	}
 
 }

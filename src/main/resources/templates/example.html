@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <title>Ninja</title>
 </head>
 <body>
-	<h1>Que onda <span th:text = "${persona.nombre}"></span>!!</h1>
-	<h1>Tu edad es: <span th:text = "${persona.edad}"></span>!!</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Edad</th>
+			</tr>
+		</thead>
+		<tbody th:each="Persona : ${persona}">
+			<tr>
+				<th th:text="${Persona.nombre}"></th>
+				<th th:text="${Persona.edad}"></th>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>
