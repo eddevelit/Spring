@@ -1,4 +1,4 @@
-package com.lalo.ninja;
+package com.lalo.ninja.controller;
 
 import java.util.ArrayList;
 import java.util.List;
