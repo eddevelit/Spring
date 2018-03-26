@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Manejando petición POST</title>
+</head>
+<body>
+	<form action="#" th:action="@{/post/agregaPersona}" th:object="${yo}" method="post">
+	
+	<p>
+		Nombre
+		<input type = "text" th:field="*{nombre}"/>
+	</p>
+	<p>
+		Edad
+		<input type = "number" th:field="*{edad}"/>
+	</p>	
+	<p>
+		Edad
+		<input type = "submit" value="Envíar"/>
+	</p>
+	</form>
+
+</body>
+</html>
