@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.lalo.ninja.model.Persona;
 
@@ -17,6 +18,19 @@ public class PostController {
 	public static final String FORM = "formulario";
 	public static final String RESULT = "resultado";
 	
+	//Reedireccionando
+	/*
+	@GetMapping("/")
+	public String dirigiendo ()
+	{
+		return "redirect:/post/form";
+	}
+	*/
+	@GetMapping("/")
+	public RedirectView redirigir()
+	{
+		return new RedirectView("/post/form");
+	}
 	
 	@GetMapping("/form")
 	public String mostrarForm(Model model)
