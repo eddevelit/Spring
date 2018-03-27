@@ -36,6 +36,7 @@ public class PostController {
 	public String mostrarForm(Model model)
 	{
 		model.addAttribute("yo", new Persona());
+		int i = 6/0;
 		return FORM;
 	}
 	
