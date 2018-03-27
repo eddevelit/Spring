@@ -1,2 +1,5 @@
 server:
   port: 9091
+  error:
+    whitelabel:
+      enabled: false
