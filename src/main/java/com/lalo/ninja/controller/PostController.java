@@ -1,5 +1,7 @@
 package com.lalo.ninja.controller;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,8 @@ public class PostController {
 	public static final String FORM = "formulario";
 	public static final String RESULT = "resultado";
 	
+	public static final Log LOG = LogFactory.getLog(PostController.class);
+	
 	//Reedireccionando
 	/*
 	@GetMapping("/")
@@ -35,16 +39,22 @@ public class PostController {
 	@GetMapping("/form")
 	public String mostrarForm(Model model)
 	{
+		/*LOG.info("Log de advertencia");
+		LOG.warn("Log de warning");
+		LOG.error("Log de error");
+		LOG.debug("Log de debug");
+		*/
 		model.addAttribute("yo", new Persona());
-		int i = 6/0;
 		return FORM;
 	}
 	
 	@PostMapping("/agregaPersona")
 	public 	ModelAndView addPerson(@ModelAttribute("yo") Persona persona)
 	{
+		LOG.info("METHOD: 'addPerson' -- PARAMS: '" + persona + "'");
 		ModelAndView mav = new ModelAndView(RESULT);	
 		mav.addObject("yo", persona);
+		LOG.info("TEMPLATE: '"+ RESULT + "' -- DATA: '" + persona + "'");
 		return mav;
 		}
 }

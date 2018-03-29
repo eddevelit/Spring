@@ -32,5 +32,11 @@ public class Persona {
 	{
 		
 	}
+	
+	//Se crea el método toString para poder imprimir objeto en log 
+	@Override
+	public String toString() {
+		return "Persona [nombre=" + nombre + ", edad=" + edad + "]";
+	}
 
 }
