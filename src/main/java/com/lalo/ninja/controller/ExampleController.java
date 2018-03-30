@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.lalo.ninja.component.ExampleComponent;
 import com.lalo.ninja.model.Persona;
+import com.lalo.ninja.service.ExampleService;
 
 @Controller
 @RequestMapping("/example")
@@ -23,13 +24,17 @@ public class ExampleController {
 	@Autowired //Indica a Spring que vamos a inyectar un componente
 	@Qualifier("exampleComponent") //Indica a Spring el nombre del bean que esta ene la memoria
 	private ExampleComponent componente;
+	
+	@Autowired
+	@Qualifier("exampleService")
+	private ExampleService servicio; 
 
 	// Primera forma
 	@RequestMapping(value = "exampleString", method = RequestMethod.GET)
 	public String exampleString(Model model) {
 		//model.addAttribute("name", "Perro");
 		componente.diHola();
-		model.addAttribute("persona", getPersonas());
+		model.addAttribute("persona", servicio.getListPeople());
 		return EXAMPLE_VIEW;
 	}
 
@@ -38,19 +43,9 @@ public class ExampleController {
 	public ModelAndView exampleMAV() {
 		
 		ModelAndView mav = new ModelAndView(EXAMPLE_VIEW);
-		mav.addObject("persona", getPersonas());
+		mav.addObject("persona", servicio.getListPeople());
 		return mav;
 	}
 	
-	private List<Persona> getPersonas()
-	{
-		List<Persona> personas = new ArrayList<>();
-		personas.add(new Persona("Lalo", 21));
-		personas.add(new Persona("Edu", 22));
-		personas.add(new Persona("Eduardo", 23));
-		personas.add(new Persona("Ed", 21));
-		
-		return personas;
-	}
 
 }
