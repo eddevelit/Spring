@@ -11,12 +11,13 @@
 		Nombre
 		<input type = "text" th:field="*{nombre}"/>
 	</p>
+	<p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Nombre incorrecto</p>
 	<p>
 		Edad
 		<input type = "number" th:field="*{edad}"/>
 	</p>	
+	<p th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}">Edad incorrecta </p>
 	<p>
-		Edad
 		<input type = "submit" value="Envíar"/>
 	</p>
 	</form>
